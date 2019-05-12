@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+
+<h1>Meet the Actors</h1>
+
+<% actors.forEach(function(actor){ %>
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="<%= actor.photo%>" alt="Card image cap">
+        <div class="card-body">
+          <h4><%= actor.name %></h4>
+          <p><%= actor.character%></p>
+          <a href="/actors/<%= actor._id %>">DETAILS</a></td>
+        </div>
+      </div>
+
+<% }); %>
+
+<%- include('../partials/footer') %>
