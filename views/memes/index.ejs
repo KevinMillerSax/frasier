@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+
+<h1>Memes!</h1>
+
+<% memes.forEach(function(meme){ %>
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="<%= meme.photo%>" alt="Card image cap">
+        <div class="card-body">
+          <h4><%= meme.userName %></h4>
+        </div>
+      </div>
+
+<% }); %>
+
+<%- include('../partials/footer') %>

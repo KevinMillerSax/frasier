@@ -11,7 +11,9 @@ var indexRouter = require('./routes/index');
 var fansRouter = require('./routes/fans');
 var actorsRouter = require('./routes/actors');
 var episodesRouter = require('./routes/episodes');
-
+var helperRouter = require('./routes/helper');
+var profileRouter = require('./routes/profiles');
+var memesRouter = require('./routes/memes');
 var app = express();
 
 require('./config/database');
@@ -34,10 +36,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/profiles', profileRouter);
+app.use('/unauthorized', helperRouter);
 app.use('/', indexRouter);
 app.use('/fans', fansRouter);
 app.use('/actors', actorsRouter);
 app.use('/episodes', episodesRouter);
+app.use('/memes', memesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

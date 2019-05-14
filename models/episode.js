@@ -19,6 +19,14 @@ const episodeSchema = new Schema({
     synopsis: String,
     cast: [{type: Schema.Types.ObjectId, ref: 'Actor'}],
     comments: [commentsSchema],
+    likes: {
+        type: Number,
+        default: 0,
+    },
+    dislikes: {
+        type: Number,
+        default: 0,
+    }
 },{
     timestamps: true
 }

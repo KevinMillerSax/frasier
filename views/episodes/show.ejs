@@ -8,6 +8,27 @@
 <%= episode.airDate %>
 <%= episode.synopsis %>
 <%= episode.cast %>
+<hr>
+<form action="/episodes/<%= episode._id %>/like" method="POST">
+   <button type="submit"><i class="fas fa-wine-glass-alt"></i></button>
+</form>
+<p>likes: <%= episode.likes %></p>
+<form action="/episodes/<%= episode._id %>/dislike" method="POST">
+   <button type="submit"><i class="fas fa-beer"></i></button>
+</form>
+<p>dislikes: <%= episode.dislikes %></p>
 
+<hr>
+<h3>comments</h3>
+<form action="/episodes/<%= episode._id %>/comments" method="POST">
+    <input type="text" name="content" placeholder="add a comment">
+    <input type="submit" value="comment">
+</form>
+<% episode.comments.forEach(function(comment){ %>
+<div>
+    <%= comment.content %>
+    <%= comment.userName %>
+</div>
+<% }); %>
 
 <%- include('../partials/footer') %>
