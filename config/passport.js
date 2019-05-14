@@ -25,7 +25,7 @@ function(accessToken, refreshToken, profile, cb) {
         var newFan = new Fan({
           name: profile.displayName,
           email: profile.emails[0].value,
-          googleId: profile.id
+          googleId: profile.id,
         });
         newFan.save(function(err) {
           if (err) return cb(err);

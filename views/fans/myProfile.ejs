@@ -1,0 +1,46 @@
+<%- include('../partials/header') %>
+
+<h1>My Profile</h1>
+<div><%= user.name %></div>
+<div>
+    <h4>Favorite Characters</h4>
+    <ul>
+    <% user.favoriteCharacters.forEach(function(character){%>
+        <li><%= character %></li>
+    <% }); %>
+    </ul>
+    <form action="/fans/profile?_method=PUT" method="POST">
+        <input type="text" name="favoriteCharacters" placeholder="add new character">
+        <input type="submit">
+    </form>
+</div>
+<div>
+    <h4>Favorite Episodes</h4>
+    <ul>
+    <% user.favoriteEpisodes.forEach(function(episode){%>
+        <li><%= episode %></li>
+    <% }); %>
+    </ul>
+    <form action="/fans/profile?_method=PUT" method="POST">
+        <input type="text" name="favoriteEpisodes" placeholder="add new episode">
+        <input type="submit">
+    </form>
+</div>
+<div>
+    <h4>Favorite Quotes</h4>
+    <ul>
+    <% user.favoriteQuotes.forEach(function(quote){%>
+        <li><%= quote %></li>
+    <% }); %>
+    </ul>
+    <form action="/fans/profile?_method=PUT" method="POST">
+        <input type="text" name="favoriteQuotes" placeholder="add new quote">
+        <input type="submit">
+    </form>
+</div>
+
+
+
+
+
+<%- include('../partials/footer') %>

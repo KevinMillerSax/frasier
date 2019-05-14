@@ -1,7 +1,27 @@
 const Fan = require('../models/fan');
 
 module.exports = {
-    index
+    index,
+    showMy,
+    update,
+}
+
+function update(req, res){
+  let myKey = Object.keys(req.body)[0];
+  let myValue = Object.values(req.body)[0];
+  let existingValues = req.user[myKey];
+  existingValues.push(myValue);
+  let updateObject = {
+    [myKey]: existingValues,
+  }
+  Fan.findByIdAndUpdate(req.user._id, updateObject, function(err, profile){
+    res.render('fans/myProfile', {user: req.user});
+  })
+}
+
+function showMy(req, res){
+  
+   res.render('fans/myProfile', {user: req.user});
 }
 
 function index(req, res, next){
