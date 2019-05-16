@@ -6,27 +6,43 @@ module.exports ={
     create,
     like,
     dislike,
-    comment
+    comment,
+    deleteComment,
+}
+
+function deleteComment(req, res){
+ 
+    Meme.findByIdAndUpdate(req.params.id, {
+        $pull: {
+            'comments': {'_id': req.params.comment_id}
+        }
+    }, function(err, meme){
+            if (err) console.log(err);
+            res.redirect('/memes');      
+    });
 }
 
 function comment(req, res){
     req.body.userName = req.user.name;
     Meme.findById(req.params.id, function(err, meme){
         meme.comments.push(req.body);
+        console.log(req.body);
         meme.save(function(err, meme){
             if (err) console.log(err);
-            res.redirect('/memes/index');
+            res.redirect('/memes');
         });
     }); 
 }
 
 function like(req, res){
-    Meme.findById(req.params.id, function(err, meme){
-        let currentLikes = meme.likes;
-        meme.likes = currentLikes + 1;
+    console.log(req.user);
+    Meme.findById(req.params.id, function(err, meme) {
+       // if
+        meme.likes.push(req.user._id)//validate this to check if user ID is inside 
         meme.save(function(err, meme){
+            console.log(meme);
             if (err) console.log(err);
-            res.redirect('/memes/index');
+            res.redirect('/memes');
         });
     });
 }
@@ -37,16 +53,21 @@ function dislike(req, res){
         meme.dislikes = currentDislikes + 1;
         meme.save(function(err, meme){
             if (err) console.log(err);
-            res.redirect('/memes/index');
+            res.redirect('/memes');
         });
     });
 }
 
 function create(req, res){
-    Meme.create(function(err, meme){
-        if (err) console.log(err);
-        res.redirect('/memes/index');
-    });
+    req.body.userName = req.user.name;
+    let meme = new Meme(req.body);
+    
+    console.log(req.body.userName);
+    meme.save(function(err){
+        if (err) return res.redirect('memes/new');
+        console.log(meme);
+        res.redirect('/memes');
+    });    
 }
 
 function index(req, res){

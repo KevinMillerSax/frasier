@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+<div class="container">
+<h2> Season <%= ourNumber %></h2>
+
+<% episodes.forEach(function(episode) {%>
+    
+    <%= episode.title %>
+    <%= episode.episodeNumber %>
+    <a href="<%= episode._id %>"class="btn btn-primary btn-lg active" role="button">Details</a>
+<% }); %>
+
+</div>
+
+<%- include('../partials/footer') %>

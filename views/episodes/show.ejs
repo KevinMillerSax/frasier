@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-
+<div class="container">
 
 <%= episode.title %>
 <%= episode.seasonNumber %>
@@ -28,7 +28,11 @@
 <div>
     <%= comment.content %>
     <%= comment.userName %>
+    <form action="<%= episode._id%>/comments/<%= comment._id%>?_method=DELETE" method="POST">
+        <button type="submit">X</button>
+      </form>
 </div>
 <% }); %>
+</div>
 
 <%- include('../partials/footer') %>

@@ -11,16 +11,11 @@ const memeCommentsSchema = new Schema({
 );
 
 const memesSchema = new Schema({
+    userName: String,
     photo: String,
     comments: [memeCommentsSchema],
-    likes: {
-        type: Number,
-        default: 0,
-    },
-    dislikes: {
-        type: Number,
-        default: 0,
-    }
+    likes: [{type: Schema.Types.ObjectId, ref: 'Fan'}],
+    dislikes: [{type: Schema.Types.ObjectId, ref: 'Fan'}],
 },{
     timestamps: true
 }

@@ -7,11 +7,35 @@ module.exports = {
     show,
     comment,
     like,
-    dislike
+    dislike,
+    indexSeason,
+    deleteComment,
 
 }
 
 //functions here
+
+function deleteComment(req, res){
+ 
+    Episode.findByIdAndUpdate(req.params.id, {
+        $pull: {
+            'comments': {'_id': req.params.comment_id}
+        }
+    }, function(err, episode){
+            if (err) console.log(err);
+            res.redirect(`/episodes/${episode._id}`);      
+    });
+}
+
+function indexSeason(req, res){
+    
+    Episode.find({seasonNumber: req.params.season}, function(err, episodes){
+        let ourNumber = req.params.season;
+        res.render('episodes/seasons', {user: req.user, episodes, ourNumber});
+    });
+}
+
+
 
 function like(req, res){
     Episode.findById(req.params.id, function(err, episode){
