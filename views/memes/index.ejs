@@ -1,45 +1,54 @@
 <%- include('../partials/header') %>
 <div class="container">
-<h1>Memes!</h1>
-<a href="/memes/new/" class="btn btn-primary btn-lg active" role="button">Add a meme</a>
-<!-- check the action on these routes -->
-<% memes.forEach(function(meme){ %>
-    <h4><%= meme.userName %> posted: </h4>
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="<%= meme.photo%>" alt="Card image cap">
-        
-        <hr>
-          <form action="/memes/<%= meme._id %>/like" method="POST">
-            <button type="submit" <%= !user ? 'disabled' : "" %>>
-              <i class="fas fa-wine-glass-alt <%= (user && meme.likes.includes(user._id)) ? 'clicked' : '' %>">
-
-              </i></button>
-          </form>
-            <p>likes: <%= meme.likes.length %></p>
-          <form action="/memes/<%= meme._id %>/dislike" method="POST">
-            <button type="submit"><i class="fas fa-beer"></i></button>
-          </form>
-            <p>dislikes: <%= meme.dislikes %></p>
-        
-          <h3>comments</h3>
-        <form action="/memes/<%= meme._id %>/comments" method="POST">
-            <input type="text" name="content" placeholder="add a comment">
-            <input type="submit" value="comment">
-        </form>
-        <% meme.comments.forEach(function(comment){ %>
-        <div>
-            <%= comment.content %>
-            <%= comment.userName %>
-            <form action="/memes/<%= meme._id%>/comments/<%= comment._id%>?_method=DELETE" method="POST">
-              <button type="submit">X</button>
-            </form>
-        </div>
-      
-        <% }); %>
+  <div class="meme-index">
+  <h1>Memes!</h1>
+  <a href="/memes/new/" class="btn btn-primary btn-lg active" role="button">Add a meme</a>
+  <!-- check the action on these routes -->
+  <% memes.forEach(function(meme){ %>
+    <div class="meme-post">
+      <div class="meme-post-top">
+      <h4><%= meme.userName %> posted: </h4>
+          <img class="card-img-top" src="<%= meme.photo%>" alt="Card image cap">
+          
+          <div class="like-dislike">
+            <div class="like">
+              <form action="/memes/<%= meme._id %>/like" method="POST">
+                <button type="submit" <%= !user ? 'disabled' : "" %>>
+                  <i class="fas fa-wine-glass-alt fa-7x <%= (user && meme.likes.includes(user._id)) ? 'clicked' : '' %>">
+                  </i></button>
+              </form>
+                <p>likes: <%= meme.likes.length %></p>
+            </div>
+              <div class="dislike">
+              <form action="/memes/<%= meme._id %>/dislike" method="POST">
+                <button type="submit" <%= !user ? 'disabled' : "" %>>
+                  <i class="fas fa-beer fa-7x <%= (user && meme.dislikes.includes(user._id)) ? 'clicked-dis' : '' %>"> 
+                  </i></button>
+              </form>
+                <p>dislikes: <%= meme.dislikes.length %></p>
+              </div>
+            </div>
       </div>
-    </br>
-    </br>
-<% }); %>
+
+            <h3>comments</h3>
+          <form action="/memes/<%= meme._id %>/comments" method="POST">
+              <input type="text" name="content" placeholder="add a comment">
+              <input type="submit" value="comment">
+          </form>
+          <% meme.comments.forEach(function(comment){ %>
+          <div>
+              <%= comment.content %>
+              <%= comment.userName %>
+              <form action="/memes/<%= meme._id%>/comments/<%= comment._id%>?_method=DELETE" method="POST">
+                <button type="submit">X</button>
+              </form>
+          </div>
+        
+          <% }); %>
+        
+      </div>
+  <% }); %>
+  </div>
 </div>  
 
 <%- include('../partials/footer') %>

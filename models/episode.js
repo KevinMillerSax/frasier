@@ -4,7 +4,11 @@ var Schema = mongoose.Schema;
 
 const commentsSchema = new Schema({
     content: String,
-    userName: String
+    userName: String,
+    userId: {
+        type: Schema.Types.ObjectId, ref: 'Fan',
+    }
+    
 },{
     timestamps: true
 }
@@ -18,15 +22,10 @@ const episodeSchema = new Schema({
     airDate: Date,
     synopsis: String,
     cast: [{type: Schema.Types.ObjectId, ref: 'Actor'}],
+   
     comments: [commentsSchema],
-    likes: {
-        type: Number,
-        default: 0,
-    },
-    dislikes: {
-        type: Number,
-        default: 0,
-    }
+    likes: [{type: Schema.Types.ObjectId, ref: 'Fan'}],
+    dislikes: [{type: Schema.Types.ObjectId, ref: 'Fan'}],
 },{
     timestamps: true
 }

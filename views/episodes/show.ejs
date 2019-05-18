@@ -7,16 +7,23 @@
 <%= episode.director %>
 <%= episode.airDate %>
 <%= episode.synopsis %>
-<%= episode.cast %>
+<% episode.cast.forEach(function(actor){ %>
+    <a href="/actors/<%= actor._id %>"><%= actor.name %></a>
+<% }); %>
 <hr>
 <form action="/episodes/<%= episode._id %>/like" method="POST">
-   <button type="submit"><i class="fas fa-wine-glass-alt"></i></button>
+   <button type="submit" <%= !user ? 'disabled' : "" %>>
+       <i class="fas fa-wine-glass-alt <%= (user && episode.likes.includes(user._id)) ? 'clicked' : '' %>"> 
+       </i></button>
 </form>
-<p>likes: <%= episode.likes %></p>
+<p>likes: <%= episode.likes.length %></p>
+
 <form action="/episodes/<%= episode._id %>/dislike" method="POST">
-   <button type="submit"><i class="fas fa-beer"></i></button>
+   <button type="submit"<%= !user ? 'disabled' : "" %>>
+       <i class="fas fa-beer <%= (user && episode.dislikes.includes(user._id)) ? 'clicked-dis' : '' %>">
+       </i></button>
 </form>
-<p>dislikes: <%= episode.dislikes %></p>
+<p>dislikes: <%= episode.dislikes.length %></p>
 
 <hr>
 <h3>comments</h3>

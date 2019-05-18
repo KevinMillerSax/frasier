@@ -1,3 +1,26 @@
 .clicked {
     color: purple;
 }
+
+.clicked-dis {
+    color: yellow;
+}
+
+.meme-index {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+}
+
+.meme-post{
+    
+}
+
+.like-dislike {
+    display:flex;
+}
+
+.meme-post-top {
+    display:flex;
+    align-content: space-between;
+}

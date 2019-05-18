@@ -38,26 +38,33 @@ function indexSeason(req, res){
 
 
 function like(req, res){
-    Episode.findById(req.params.id, function(err, episode){
-        let currentLikes = episode.likes;
-        episode.likes = currentLikes + 1;
-        episode.save(function(err, episode){
-            if (err) console.log(err);
-            res.redirect(`/episodes/${episode._id}`);
-        });
+    console.log(req.user);
+    Episode.findById(req.params.id, function(err, episode) {
+       if (!episode.likes.includes(req.user._id) && !episode.dislikes.includes(req.user._id)) {
+            episode.likes.push(req.user._id)//validate this to check if user ID is inside 
+       } else {
+           episode.likes.splice(episode.likes.indexOf(req.user._id), 1);
+       }
+       episode.save(function(err, episode){
+        if (err) console.log(err);
+        res.redirect(`/episodes/${episode._id}`);
     });
-}
-function dislike(req, res){
-    Episode.findById(req.params.id, function(err, episode){
-        let currentDislikes = episode.dislikes;
-        episode.dislikes = currentDislikes + 1;
-        episode.save(function(err, episode){
-            if (err) console.log(err);
-            res.redirect(`/episodes/${episode._id}`);
-        });
     });
 }
 
+function dislike(req, res){
+    Episode.findById(req.params.id, function(err, episode){
+        if(!episode.dislikes.includes(req.user._id) && !episode.likes.includes(req.user._id)) {
+            episode.dislikes.push(req.user._id)
+        } else {
+            episode.dislikes.splice(episode.dislikes.indexOf(req.user._id), 1);
+        }
+        episode.save(function(err, episode){
+            if (err) console.log(err);
+            res.redirect(`/episodes/${episode._id}`);
+        });
+    });
+}
 
 function comment(req, res){
     req.body.userName = req.user.name;
@@ -73,7 +80,7 @@ function comment(req, res){
 
 
 function show(req, res){
-    Episode.findById(req.params.id)
+    Episode.findById(req.params.id).populate('cast')
     .then(episode => {
         console.log(episode);
         res.render('episodes/show', {user: req.user, episode});
@@ -95,8 +102,7 @@ async function create(req, res){
     console.log(episode);
     episode.save(function(err, episode){
         if (err) console.log(err);
+        // res.redirect('episodes/new')
         res.redirect(`episodes/${episode._id}`);
     });
-    
-
 }
