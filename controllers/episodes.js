@@ -96,8 +96,6 @@ async function create(req, res){
     console.log(date);
     req.body.airDate = date;
     //catching actors
-    let actors = req.body.cast.split(', ');
-    req.body.cast = actors;
     let episode = new Episode(req.body);
     console.log(episode);
     episode.save(function(err, episode){

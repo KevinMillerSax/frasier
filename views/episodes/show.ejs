@@ -7,9 +7,6 @@
 <%= episode.director %>
 <%= episode.airDate %>
 <%= episode.synopsis %>
-<% episode.cast.forEach(function(actor){ %>
-    <a href="/actors/<%= actor._id %>"><%= actor.name %></a>
-<% }); %>
 <hr>
 <form action="/episodes/<%= episode._id %>/like" method="POST">
    <button type="submit" <%= !user ? 'disabled' : "" %>>

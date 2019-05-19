@@ -21,7 +21,6 @@ const episodeSchema = new Schema({
     director: String,
     airDate: Date,
     synopsis: String,
-    cast: [{type: Schema.Types.ObjectId, ref: 'Actor'}],
    
     comments: [commentsSchema],
     likes: [{type: Schema.Types.ObjectId, ref: 'Fan'}],
