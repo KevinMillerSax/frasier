@@ -1,18 +1,19 @@
 <%- include('../partials/header') %>
 <div class="container">
-<h1>Meet the Actors</h1>
+  <h1>Meet the Actors</h1>
+    <div class="actors-container">
+      <% actors.forEach(function(actor){ %>
+          <div class="card actors-index-card">
+              <img class="card-img-top actors-index-photo" src="<%= actor.photo%>" alt="Card image cap">
+              <div class="card-body">
+                <h4><%= actor.name %></h4>
+                <p><%= actor.character%></p>
+                <a href="/actors/<%= actor._id %>">DETAILS</a></td>
+              </div>
+          </div>
 
-<% actors.forEach(function(actor){ %>
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="<%= actor.photo%>" alt="Card image cap">
-        <div class="card-body">
-          <h4><%= actor.name %></h4>
-          <p><%= actor.character%></p>
-          <a href="/actors/<%= actor._id %>">DETAILS</a></td>
-        </div>
-      </div>
-
-<% }); %>
+      <% }); %>
+    </div>
 </div>
 
 <%- include('../partials/footer') %>

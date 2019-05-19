@@ -1,3 +1,8 @@
+body{
+    padding-top: 70px;
+}
+
+
 .clicked {
     color: purple;
 }
@@ -12,9 +17,7 @@
     flex-direction: column;
 }
 
-.meme-post{
-    
-}
+
 
 .like-dislike {
     display:flex;
@@ -23,4 +26,34 @@
 .meme-post-top {
     display:flex;
     align-content: space-between;
+}
+
+.actors-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.actors-index-card {
+    width: 20rem;
+    height: 65vh;
+}
+
+.actors-index-photo {
+    height: 50%;
+    object-fit: cover;
+}
+
+.actor-card {
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 80rem;
+    height: 90vh;
+}
+
+.actor-image {
+    height: 80vh;
+    width: 40%;
+    object-fit: cover;
 }

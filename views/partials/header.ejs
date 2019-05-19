@@ -4,74 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     
-
+    <!-- new scripts -->
     <title>Frasier</title>
 </head>
 <body>
-    
-    <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>   
-            </div>
-            
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    
-                    <li><a href="/memes/">Memes</a></li>
-                    <li><a href="/actors/">Actors</a></li>
-                    <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/episodes/season/1">Season One</a></li>
-                        <li><a href="/episodes/season/2">Season Two</a></li>
-                        <li><a href="/episodes/season/3">Season Three</a></li>
-                        <li><a href="/episodes/season/4">Season Four</a></li>
-                        <li><a href="/episodes/season/5">Season Five</a></li>
-                        <li><a href="/episodes/season/6">Season Six</a></li>
-                        <li><a href="/episodes/season/7">Season Seven</a></li>
-                        <li><a href="/episodes/season/8">Season Eight</a></li>
-                        <li><a href="/episodes/season/9">Season Nine</a></li>
-                        <li><a href="/episodes/season/10">Season Ten</a></li>
-                        <li><a href="/episodes/season/11">Season Eleven</a></li>
-                    </ul>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Frasier</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                      <a class="nav-link" href="/memes/">Memes <span class="sr-only">(current)</span></a>
                     </li>
-                </ul>
-                <form class="navbar-form navbar-left">
-                    <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-                <ul class="nav navbar-nav navbar-right">
-                        <li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/actors/">Actors</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Episodes
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/episodes/season/1">Season One</a>
+                        <a class="dropdown-item" href="/episodes/season/2">Season Two</a>
+                        <a class="dropdown-item" href="/episodes/season/3">Season Three</a>
+                        <a class="dropdown-item" href="/episodes/season/4">Season Four</a>
+                        <a class="dropdown-item" href="/episodes/season/5">Season Five</a>
+                        <a class="dropdown-item" href="/episodes/season/6">Season Six</a>
+                        <a class="dropdown-item" href="/episodes/season/7">Season Seven</a>
+                        <a class="dropdown-item" href="/episodes/season/8">Season Eight</a>
+                        <a class="dropdown-item" href="/episodes/season/9">Season Nine</a>
+                        <a class="dropdown-item" href="/episodes/season/10">Season Ten</a>
+                        <a class="dropdown-item" href="/episodes/season/11">Season Eleven</a>  
+                      </div>
+                    </li>
+                  </ul>
+                  <ul class="navbar-nav mr-auto>
+                    <li class="nav-item">
                             <% if (user){ %>
-                                <a href="/logout">Logout</a>
+                                <a class="nav-link" href="/logout">Logout</a>
                                 <% } else { %>
-                                    <a href="/auth/google">Login with Google</a>
-                                <% } %>
-                        </li>
-                        <li class="active"><a href="/fans/profile/">My Profile<span class="sr-only">(current)</span></a></li>
-                    </ul>
+                                    <a class="nav-link" href="/auth/google">Login with Google</a>
+                            <% } %>
                     </li>
-                </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-            </nav>
-
+                    <li class="nav-item">
+                            <a class="nav-link" href="/fans/profile/">My Profile</a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+   
 
 
 
