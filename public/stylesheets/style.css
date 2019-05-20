@@ -11,13 +11,6 @@ body{
     color: yellow;
 }
 
-.meme-index {
-    display: flex;
-    align-content: center;
-    flex-direction: column;
-}
-
-
 
 .like-dislike {
     display:flex;
@@ -56,4 +49,40 @@ body{
     height: 80vh;
     width: 40%;
     object-fit: cover;
+}
+
+.meme-card-top {
+    margin: 0 auto;
+    position: relative;
+}
+
+.meme-card {
+    /* display: grid;
+    grid-template-columns: 2fr 3fr; */
+    display:flex;
+    flex-direction: column;
+    width: 90vw;
+    /* height: 90vh;  */
+}
+.meme-photo{
+    max-height: 80vh;
+    width: auto;
+    position: relative;
+}
+
+.meme-glass {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.meme-like-dislike {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
 }
