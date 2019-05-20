@@ -12,7 +12,7 @@
        <h6> Aired on: <%= episode.airDate %> </h6>
         <%= episode.synopsis %>
         <hr>
-        <!-- <div class="episode-like-dislike">
+        <div class="episode-like-dislike">
             <div class="meme-glass-episode">
                 <form action="/episodes/<%= episode._id %>/like" method="POST">
                 <button class="btn btn-light" type="submit" <%= !user ? 'disabled' : "" %>>
@@ -52,7 +52,7 @@
               </div>
                 
               </div>
-            <% }); %> -->
+            <% }); %>
     </div>
 </div>
 
