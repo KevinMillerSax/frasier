@@ -1,18 +1,20 @@
 <%- include('../partials/header') %>
 <div class="container">
-    <label for="meme-url">Your Meme's URL</label>
-   
-    <form action="/memes" method="POST" enctype="multipart/form-data">
-        <div>
-            <label for="photo">Photo</label>
-            <input type="file" id="photo" name="photo" accept="image/*" required>
+
+    <div class="card text-center">
+        <div class="card-header">
+            Choose Image to Upload
         </div>
-        <input type="submit">
-
-
-
-    </form>
-    </div>
+        <div class="card-body">
+            <form action="/memes" method="POST" enctype="multipart/form-data">
+                <div>
+                    <input type="file" id="photo" name="photo" accept="image/*" required>
+                </div>
+                <input type="submit" class="btn btn-primary">
+            </form>
+        </div>
+    </div> 
+</div>
 
 
 <%- include('../partials/footer') %>

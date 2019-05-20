@@ -8,7 +8,7 @@ body{
 }
 
 .clicked-dis {
-    color: yellow;
+    color: darkgoldenrod;
 }
 
 
@@ -30,10 +30,11 @@ body{
 .actors-index-card {
     width: 20rem;
     height: 65vh;
+    margin-bottom: 5vh;
 }
 
 .actors-index-photo {
-    height: 50%;
+    height: 60%;
     object-fit: cover;
 }
 
@@ -62,6 +63,7 @@ body{
     display:flex;
     flex-direction: column;
     width: 90vw;
+    margin-bottom: 30px;
     /* height: 90vh;  */
 }
 .meme-photo{
@@ -85,4 +87,42 @@ body{
 .comment-header {
     display: flex;
     justify-content: space-between;
+}
+
+.season-page {
+    display:flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.episode-card {
+    width: 17vw;
+    height: 10vw;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.episode-show-page {
+    border: 1px solid black;
+}
+
+.episode-title {
+    display: flex;
+    align-items: flex-end;
+}
+
+.season-episode {
+    margin-left: 40px;
+    margin-bottom: 2px;
+}
+
+.episode-like-dislike {
+    display: flex;
+}
+
+.meme-glass-episode {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin-right: 25px; 
 }

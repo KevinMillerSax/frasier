@@ -33,6 +33,7 @@ function deleteComment(req, res){
 }
 
 function comment(req, res){
+    
     req.body.userName = req.user.name;
     Meme.findById(req.params.id, function(err, meme){
         meme.comments.push(req.body);
@@ -55,12 +56,14 @@ function like(req, res){
        meme.save(function(err, meme){
         console.log(meme);
         if (err) console.log(err);
-        res.redirect('/memes');
+        res.json({likes: meme.likes, userId: req.user._id});
     });
     });
+    
 }
 
 function dislike(req, res){
+    console.log(req.user);
     Meme.findById(req.params.id, function(err, meme){
         if(!meme.dislikes.includes(req.user._id) && !meme.likes.includes(req.user._id)) {
             meme.dislikes.push(req.user._id)
@@ -69,7 +72,8 @@ function dislike(req, res){
         }
         meme.save(function(err, meme){
             if (err) console.log(err);
-            res.redirect('/memes');
+            
+            res.json({dislikes: meme.dislikes, userId: req.user._id});
         });
     });
 }
@@ -85,7 +89,7 @@ function create(req, res){
                 req.flash('error', err.message);
                 return res.redirect('/memes');
             }
-            res.redirect('/memes')
+            res.redirect('/memes/')
         });
     });   
 }

@@ -1,14 +1,16 @@
 <%- include('../partials/header') %>
 <div class="container">
-<h2> Season <%= ourNumber %></h2>
+    <h2> Season <%= ourNumber %></h2>
 
-<% episodes.forEach(function(episode) {%>
-    
-    <%= episode.title %>
-    <%= episode.episodeNumber %>
-    <a href="/episodes/<%= episode._id %>"class="btn btn-primary btn-lg active" role="button">Details</a>
-<% }); %>
-
+  <div class="season-page">
+    <% episodes.forEach(function(episode) {%>
+        <div class="card text-center episode-card">
+            <h5 class="card-title"><%= episode.title %></h5>
+            <h6 class="card-subtitle mb-2 text-muted">Episode <%= episode.episodeNumber %></h6>
+            <a href="/episodes/<%= episode._id %>"class="card-link" role="button">Details</a>
+        </div>
+    <% }); %>
+  </div>
 </div>
 
 <%- include('../partials/footer') %>

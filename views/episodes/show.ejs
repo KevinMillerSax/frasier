@@ -1,42 +1,59 @@
 <%- include('../partials/header') %>
 <div class="container">
-
-<%= episode.title %>
-<%= episode.seasonNumber %>
-<%= episode.episodeNumber %>
-<%= episode.director %>
-<%= episode.airDate %>
-<%= episode.synopsis %>
-<hr>
-<form action="/episodes/<%= episode._id %>/like" method="POST">
-   <button type="submit" <%= !user ? 'disabled' : "" %>>
-       <i class="fas fa-wine-glass-alt <%= (user && episode.likes.includes(user._id)) ? 'clicked' : '' %>"> 
-       </i></button>
-</form>
-<p>likes: <%= episode.likes.length %></p>
-
-<form action="/episodes/<%= episode._id %>/dislike" method="POST">
-   <button type="submit"<%= !user ? 'disabled' : "" %>>
-       <i class="fas fa-beer <%= (user && episode.dislikes.includes(user._id)) ? 'clicked-dis' : '' %>">
-       </i></button>
-</form>
-<p>dislikes: <%= episode.dislikes.length %></p>
-
-<hr>
-<h3>comments</h3>
-<form action="/episodes/<%= episode._id %>/comments" method="POST">
-    <input type="text" name="content" placeholder="add a comment">
-    <input type="submit" value="comment">
-</form>
-<% episode.comments.forEach(function(comment){ %>
-<div>
-    <%= comment.content %>
-    <%= comment.userName %>
-    <form action="<%= episode._id%>/comments/<%= comment._id%>?_method=DELETE" method="POST">
-        <button type="submit">X</button>
-      </form>
-</div>
-<% }); %>
+    <div class="episode-show-page">
+        <div class="episode-title">
+            <h2> <%= episode.title %> </h2>
+            <div class="season-episode">
+                <h4> Season <%= episode.seasonNumber %>, 
+                episode <%= episode.episodeNumber %> </h4>
+            </div>
+        </div>
+       <h5> Directed by: <%= episode.director %> </h5>
+       <h6> Aired on: <%= episode.airDate %> </h6>
+        <%= episode.synopsis %>
+        <hr>
+        <!-- <div class="episode-like-dislike">
+            <div class="meme-glass-episode">
+                <form action="/episodes/<%= episode._id %>/like" method="POST">
+                <button class="btn btn-light" type="submit" <%= !user ? 'disabled' : "" %>>
+                    <i class="fas fa-wine-glass-alt fa-2x <%= (user && episode.likes.includes(user._id)) ? 'clicked' : '' %>"> 
+                    </i></button>
+                </form>
+                <p>Likes: <%= episode.likes.length %></p>
+            </div>
+            <div class="meme-glass">
+                <form action="/episodes/<%= episode._id %>/dislike" method="POST">
+                <button class="btn btn-light" type="submit"<%= !user ? 'disabled' : "" %>>
+                    <i class="fas fa-beer fa-2x <%= (user && episode.dislikes.includes(user._id)) ? 'clicked-dis' : '' %>">
+                    </i></button>
+                </form>
+                <p>Dislikes: <%= episode.dislikes.length %></p>
+            </div>
+        </div>
+        <div class="form-group">
+                <label for="comment-post">Comments:</label>
+              <form action="/episodes/<%= episode._id %>/comments" method="POST">
+                
+                  <textarea class="form-control" type="text" name="content" placeholder="add a comment" id="comment-post"> </textarea>
+                  <input type="submit" value="comment" class="btn btn-primary">
+              </form>
+            </div>
+            <a class="btn btn-primary" data-toggle="collapse" href="#episodeCollapse" role="button" aria-expanded="false" aria-controls="episodeCollapse">Show Comments</a>
+            <% episode.comments.forEach(function(comment){ %>
+              <div class="collapse multi-collapse" id="episodeCollapse">
+              <div class="card">
+                <h6 class="card-header comment-header"><%= comment.userName %> posted: 
+                  <form action="/episodes/<%= episode._id%>/comments/<%= comment._id%>?_method=DELETE" method="POST">
+                  <button type="submit">X</button>
+                </form></h6>
+                <div class="card-body">
+                <p class="card-text"><%= comment.content %></p>
+                </div>
+              </div>
+                
+              </div>
+            <% }); %> -->
+    </div>
 </div>
 
 <%- include('../partials/footer') %>
