@@ -8,6 +8,7 @@ const authorization = require('../utilities/authorize');
 router.get('/', fansCtrl.index);
 router.get('/profile', authorization.isLoggedIn, fansCtrl.showMy);
 router.put('/profile', authorization.isLoggedIn, fansCtrl.update);
+router.delete('/profile/:id', authorization.isLoggedIn, fansCtrl.deleteOne);
 
 module.exports = router; 
 

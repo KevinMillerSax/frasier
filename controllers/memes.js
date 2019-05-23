@@ -21,20 +21,22 @@ module.exports ={
 }
 
 function deleteComment(req, res){
- 
-    Meme.findByIdAndUpdate(req.params.id, {
-        $pull: {
-            'comments': {'_id': req.params.comment_id}
-        }
-    }, function(err, meme){
-            if (err) console.log(err);
-            res.redirect('/memes');      
-    });
+  
+        Meme.findByIdAndUpdate(req.params.id, {
+            $pull: {
+                'comments': {'_id': req.params.comment_id}
+            }
+        }, function(err, meme){
+                if (err) console.log(err);
+                res.redirect('/memes');      
+        });
+    
 }
 
 function comment(req, res){
     
     req.body.userName = req.user.name;
+    req.body.userId = req.user._id;
     Meme.findById(req.params.id, function(err, meme){
         meme.comments.push(req.body);
         console.log(req.body);

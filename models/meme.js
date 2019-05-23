@@ -4,7 +4,8 @@ var Schema = mongoose.Schema;
 
 const memeCommentsSchema = new Schema({
     content: String,
-    userName: String
+    userName: String,
+    userId: String,
 },{
     timestamps: true
 }

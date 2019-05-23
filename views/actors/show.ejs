@@ -1,13 +1,15 @@
 <%- include('../partials/header') %>
-<!-- <div class="container"> -->
+<div class="actor-card-back">
+<div class="container">
    <div class="card actor-card">
     <img class="card-img-top actor-image" src="<%= actor.photo%>" alt="Card image cap">
-        <div class="card-body">
+        <div class="card-body actor-card-body">
         <h4><%= actor.name %></h4>
         <h5> Role: <%= actor.character %></h3>
         <p><%= actor.bio %></p>
         </div>
     </div>
-<!-- </div> -->
+</div>
+</div>
 
 <%- include('../partials/footer') %>

@@ -68,6 +68,7 @@ function dislike(req, res){
 
 function comment(req, res){
     req.body.userName = req.user.name;
+    req.body.userId = req.user._id;
     Episode.findById(req.params.id, function(err, episode){
         episode.comments.push(req.body);
         episode.save(function(err, episode){

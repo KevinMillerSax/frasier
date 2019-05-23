@@ -4,10 +4,25 @@ module.exports = {
     index,
     showMy,
     update,
+    deleteOne,
+}
+
+function deleteOne(req, res){
+  let type = req.query.type; //every after "?" in http is a accessable query
+  removedElement= req.user[type].splice(req.params.id, 1);
+  updateObject = {
+    [type]: req.user[type],
+  }
+  Fan.findByIdAndUpdate(req.user._id, updateObject, function(err, fan){ //update object needs to be in object form, see above
+    if(err)console.log(err);
+    res.redirect('/fans/profile');
+  });
+  
 }
 
 function update(req, res){
   let myKey = Object.keys(req.body)[0];
+  console.log(myKey);
   let myValue = Object.values(req.body)[0];
   let existingValues = req.user[myKey];
   existingValues.push(myValue);
@@ -16,7 +31,7 @@ function update(req, res){
   }
   Fan.findByIdAndUpdate(req.user._id, updateObject, function(err, profile){
     res.render('fans/myProfile', {user: req.user});
-  })
+  });
 }
 
 function showMy(req, res){

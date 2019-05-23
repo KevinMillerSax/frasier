@@ -1,6 +1,7 @@
 <%- include('../partials/header') %>
+<div class="season-index-page">
 <div class="container">
-    <h2> Season <%= ourNumber %></h2>
+    <h2 class="season-header"> Season <%= ourNumber %></h2>
 
   <div class="season-page">
     <% episodes.forEach(function(episode) {%>
@@ -11,6 +12,7 @@
         </div>
     <% }); %>
   </div>
+</div>
 </div>
 
 <%- include('../partials/footer') %>

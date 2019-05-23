@@ -1,7 +1,66 @@
 body{
     padding-top: 70px;
+    font-family: 'Roboto Slab', serif;  
+   
+
 }
 
+.unauthorized-page {
+    background: url("../images/bird.png");
+    background-size: cover;
+    margin-left: 14%; 
+    height: 90vh;
+    width: 70vw;
+}
+
+.unauthorized-header {
+    color: rgba(255,250,240,0.85);
+    font-size: 50px;
+    text-align: center;
+}
+.actor-card-back {
+    background: url("../images/niles-apartment.png");
+    background-size: cover;
+    min-height: 100vh;
+    background-color: rgba(225,193,163,0.3);
+    background-blend-mode: lighten;
+}
+
+.actors-index-page{
+    background: url("../images/living-room.png");
+    background-color: rgba(225,193,163,0.2);
+    background-blend-mode: lighten;
+    background-size: cover;
+}
+
+.actors-index-header {
+    text-shadow: 1px 1px 1px beige;
+
+}
+
+.meme-image {
+    background: url("../images/faun.png");
+    background-color: rgba(225,193,163,0.3);
+    background-blend-mode: lighten;
+   /* background-color: rgba(255,250,240,0.85); */
+}
+
+.memes-header {
+    color: rgba(255,250,240,1);
+    text-shadow: 2px 1px 1px black;
+}
+
+.season-index-page {
+    background: url("../images/seattle.png");
+    background-color: rgba(169,178,233,0.2);
+    background-blend-mode: lighten;
+    background-size: cover;
+}
+.season-header{
+ color:beige;
+}
+
+    
 
 .clicked {
     color: purple;
@@ -31,6 +90,8 @@ body{
     width: 20rem;
     height: 65vh;
     margin-bottom: 5vh;
+    background-color: rgba(255,250,240,0.85);
+    box-shadow: 4px 4px  rgba(255,250,240,0.5);
 }
 
 .actors-index-photo {
@@ -42,8 +103,11 @@ body{
     display:flex;
     flex-direction: row;
     justify-content: flex-start;
-    width: 80rem;
-    height: 90vh;
+    width: 80vw;
+    height: auto;
+    background-color:  rgba(255,250,240,0.85);
+   
+   
 }
 
 .actor-image {
@@ -57,17 +121,40 @@ body{
     position: relative;
 }
 
+.meme-new-image {
+    background: url("../images/frasier.png");
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.new-meme-card {
+    margin: 0 auto;
+    width: 40vw;
+}
+
+.new-meme-body {
+    background-color: rgba(255,250,240,0.85);
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 20vh;
+   
+
+}
+
 .meme-card {
     /* display: grid;
     grid-template-columns: 2fr 3fr; */
     display:flex;
     flex-direction: column;
-    width: 90vw;
+    width: 80vw;
     margin-bottom: 30px;
+    background-color: rgba(255,250,240,0.85);
+
     /* height: 90vh;  */
 }
 .meme-photo{
-    max-height: 80vh;
+    max-height: 70vh;
     width: auto;
     position: relative;
 }
@@ -82,6 +169,16 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+}
+
+.meme-column-rev {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.comment-rev {
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .comment-header {
@@ -100,10 +197,19 @@ body{
     height: 10vw;
     margin-top: 10px;
     margin-bottom: 10px;
+    background-color: rgba(255,250,240,0.89);
+    box-shadow: 4px 4px grey;
+   
 }
 
 .episode-show-page {
-    border: 1px solid black;
+    background-color:rgba(255,250,240,0.85);
+    padding: 10px
+}
+.episode-image {
+    background-image: url("../images/living-room.png");
+    background-size:cover;
+    min-height: 100vh;
 }
 
 .episode-title {
@@ -125,4 +231,48 @@ body{
     flex-direction: column;
     justify-content: left;
     margin-right: 25px; 
+}
+
+.profile-characters-episodes {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-bottom: 4%;
+
+}
+
+.profile-characters {
+    display: flex;
+    flex-direction: column;
+    padding-right: 20%;
+}
+
+.profile-episodes {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.profile-quotes {
+    display:flex;
+    flex-direction: column;
+    width: 40%
+}
+
+.profile-name {
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 4%
+}
+.profile-list {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    align-items: center;
+    padding: 5px;
+
+}
+
+.list-delete {
+    display: inline;
+    
 }

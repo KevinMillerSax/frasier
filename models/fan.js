@@ -17,3 +17,11 @@ const fanSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Fan', fanSchema);
+
+// function deleteCharacter(id){
+//     favoriteCharacters.splice(id, 1);
+// }
+
+// function deleteEpisode(id){
+//     favoriteEpisodes.splice(id, 1);
+// }

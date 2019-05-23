@@ -2,7 +2,7 @@ $(window).on('click', function(event){
    if (event.target.tagName === 'I'){
        if(event.target.classList.contains('fa-beer')){
            function success(data){
-               $(event.target).parent().siblings('.dislike-counter').text(`dislikes: ${data.dislikes.length}`);
+               $(event.target).parent().siblings('.dislike-counter').text(`Dislikes: ${data.dislikes.length}`);
                if(data.dislikes.includes(data.userId) && !$(event.target).hasClass('clicked-dis')){
                    $(event.target).addClass('clicked-dis');
                } else if (!data.dislikes.includes(data.userId) && $(event.target).hasClass('clicked-dis')){
@@ -19,7 +19,7 @@ $(window).on('click', function(event){
           });
        } else if(event.target.classList.contains('fa-wine-glass-alt')){
         function success(data){
-            $(event.target).parent().siblings('.like-counter').text(`likes: ${data.likes.length}`);
+            $(event.target).parent().siblings('.like-counter').text(`Likes: ${data.likes.length}`);
             if(data.likes.includes(data.userId) && !$(event.target).hasClass('clicked')){
                 $(event.target).addClass('clicked');
             } else if (!data.likes.includes(data.userId) && $(event.target).hasClass('clicked')){

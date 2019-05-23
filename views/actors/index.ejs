@@ -1,6 +1,7 @@
 <%- include('../partials/header') %>
+<div class="actors-index-page">
 <div class="container">
-  <h1>Meet the Actors</h1>
+  <h1 class="actors-index-header">Meet the Actors</h1>
     <div class="actors-container">
       <% actors.forEach(function(actor){ %>
           <div class="card actors-index-card">
@@ -14,6 +15,7 @@
 
       <% }); %>
     </div>
+</div>
 </div>
 
 <%- include('../partials/footer') %>

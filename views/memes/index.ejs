@@ -1,16 +1,18 @@
 <%- include('../partials/header') %>
 <script defer src="/javascripts/meme-main.js"></script>
+<div class="meme-image">
 <div class="container">
   
-      <h1>Memes!</h1>
-      <a href="/memes/new/" class="btn btn-primary btn-lg active" role="button">Add a meme</a>
+      <h1 class="memes-header">Memes!</h1>
+      <a href="/memes/new/" class="btn btn-dark btn-lg active" role="button">Add a meme</a>
       <!-- check the action on these routes -->
-      
+    <div class="meme-column-rev"> 
       <% memes.forEach(function(meme){ %>
         
         <div class="card meme-card">
           <div class="meme-card-top ">
           <h4><%= meme.userName %> posted: </h4>
+          <p class= "card-text"> <small class="text-muted">posted on: <%= meme.createdAt.toLocaleString() %></p></small>
               <img class="meme-photo" src="<%= meme.photo%>" alt="Card image cap">
           </div>  
               <div class="card-body overflow-auto">
@@ -41,26 +43,32 @@
                     </form>
                   </div>
                   <a class="btn btn-primary" data-toggle="collapse" href="#memeCollapse" role="button" aria-expanded="false" aria-controls="memeCollapse">Show Comments</a>
-                  <% meme.comments.forEach(function(comment){ %>
-                    <div class="collapse multi-collapse" id="memeCollapse">
-                    <div class="card">
-                      <h6 class="card-header comment-header"><%= comment.userName %> posted: 
-                        <form action="/memes/<%= meme._id%>/comments/<%= comment._id%>?_method=DELETE" method="POST">
-                        <button type="submit">X</button>
-                      </form></h6>
-                      <div class="card-body">
-                      <p class="card-text"><%= comment.content %> <%= comment.createdAt %></p>
+                  <div class="comment-rev">
+                    <% meme.comments.forEach(function(comment){ %>
+                      <div class="collapse multi-collapse" id="memeCollapse">
+                      <div class="card">
+                        <h6 class="card-header comment-header"><%= comment.userName %> posted: 
+                          <% if(user && comment.userId == user._id) { %>
+                          <form action="/memes/<%= meme._id%>/comments/<%= comment._id%>?_method=DELETE" method="POST">
+                          <button class="btn btn-danger" type="submit">X</button>
+                        </form>
+                          <% } %>
+                      </h6>
+                        <div class="card-body">
+                        <p class="card-text"><%= comment.content %> </p>
+                        <p class= "card-text"> <small class="text-muted">posted on: <%= comment.createdAt.toLocaleString() %></p></small>
+                        </div>
                       </div>
-                    </div>
-                      
-                    </div>
-                  <% }); %>
-                  
+                        
+                      </div>
+                    <% }); %>
+                   </div>
           </div>    
         </div> 
       <% }); %>
-    
+    </div>
 </div> 
+</div>
  
 
 <%- include('../partials/footer') %>

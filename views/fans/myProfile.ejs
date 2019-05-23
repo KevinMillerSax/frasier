@@ -1,43 +1,63 @@
 <%- include('../partials/header') %>
 <div class="container">
-<h1>My Profile</h1>
-<div><%= user.name %></div>
-<div>
-    <h4>Favorite Characters</h4>
-    <ul>
-    <% user.favoriteCharacters.forEach(function(character){%>
-        <li><%= character %></li>
-    <% }); %>
-    </ul>
-    <form action="/fans/profile?_method=PUT" method="POST">
-        <input type="text" name="favoriteCharacters" placeholder="add new character">
-        <input type="submit">
-    </form>
-</div>
-<div>
-    <h4>Favorite Episodes</h4>
-    <ul>
-    <% user.favoriteEpisodes.forEach(function(episode){%>
-        <li><%= episode %></li>
-    <% }); %>
-    </ul>
-    <form action="/fans/profile?_method=PUT" method="POST">
-        <input type="text" name="favoriteEpisodes" placeholder="add new episode">
-        <input type="submit">
-    </form>
-</div>
-<div>
-    <h4>Favorite Quotes</h4>
-    <ul>
-    <% user.favoriteQuotes.forEach(function(quote){%>
-        <li><%= quote %></li>
-    <% }); %>
-    </ul>
-    <form action="/fans/profile?_method=PUT" method="POST">
-        <input type="text" name="favoriteQuotes" placeholder="add new quote">
-        <input type="submit">
-    </form>
-</div>
+    <h1>My Profile</h1>
+    <hr>
+    <div class="profile-show">
+        <h2 class="profile-name"><%= user.name %></h2>
+
+        <div class="profile-characters-episodes">
+            <div class="profile-characters">
+                <h4>Favorite Characters</h4>
+                <form action="/fans/profile?_method=PUT" method="POST">
+                    <input type="text" name="favoriteCharacters" placeholder="add new character">
+                    <input class="btn btn-primary" type="submit">
+                </form>
+                <ul class="list-group">
+                <% user.favoriteCharacters.forEach(function(character, idx){%>
+                    
+                        <li class="list-group-item text-center"><%= character %>
+                        <form action="/fans/profile/<%= idx %>?_method=DELETE&type=favoriteCharacters" method="POST">
+                            <button class="btn btn-danger list-delete" type="submit">X</button>
+                        </form></li>
+                    
+                <% }); %>
+                </ul>
+            </div>
+            <div class="profile-episodes">
+                <h4>Favorite Episodes</h4>
+                <form action="/fans/profile?_method=PUT" method="POST">
+                    <input type="text" name="favoriteEpisodes" placeholder="add new episode">
+                    <input class="btn btn-primary" type="submit">
+                </form>
+                <ul class="list-group">
+                <% user.favoriteEpisodes.forEach(function(episode, idx){%>
+                    <div class= "profile-list">
+                    <li class="list-group-item text-center"><%= episode %></li>
+                    <form action="/fans/profile/<%= idx %>?_method=DELETE&type=favoriteEpisodes" method="POST">
+                        <button class="btn btn-danger list-delete" type="submit">X</button>
+                    </form>
+                    </div>
+                <% }); %>
+                </ul>
+                
+            </div>
+        </div>
+        <div class="profile-quotes">
+            <h4>Favorite Quotes</h4>
+            <form action="/fans/profile?_method=PUT" method="POST">
+                <input type="text" name="favoriteQuotes" placeholder="add new quote">
+                <input class="btn btn-primary" type="submit">
+            </form>
+            <ul class="list-group">
+                <% user.favoriteQuotes.forEach(function(quote, idx){%>
+                    <li class="list-group-item"><%= quote %>
+                        <form action="/fans/profile/<%= idx %>?_method=DELETE&type=favoriteQuotes" method="POST">
+                            <button class="btn btn-danger list-delete" type="submit">X</button>
+                        </form></li>
+                <% }); %>
+            </ul>
+        </div>
+    </div>
 </div>
 
 
