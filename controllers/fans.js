@@ -30,7 +30,7 @@ function update(req, res){
     [myKey]: existingValues,
   }
   Fan.findByIdAndUpdate(req.user._id, updateObject, function(err, profile){
-    res.render('fans/myProfile', {user: req.user});
+    res.redirect('/fans/profile');
   });
 }
 
