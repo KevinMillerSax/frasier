@@ -1,4 +1,5 @@
 <%- include('../partials/header') %>
+<div class="profile-backing">
 <div class="container">
     <h1>My Profile</h1>
     <hr>
@@ -14,12 +15,12 @@
                 </form>
                 <ul class="list-group">
                 <% user.favoriteCharacters.forEach(function(character, idx){%>
-                    
-                        <li class="list-group-item text-center"><%= character %>
+                    <div class= "profile-list">
+                        <li class="list-group-item text-center"><%= character %> </li>
                         <form action="/fans/profile/<%= idx %>?_method=DELETE&type=favoriteCharacters" method="POST">
                             <button class="btn btn-danger list-delete" type="submit">X</button>
-                        </form></li>
-                    
+                        </form>
+                    </div>
                 <% }); %>
                 </ul>
             </div>
@@ -50,15 +51,17 @@
             </form>
             <ul class="list-group">
                 <% user.favoriteQuotes.forEach(function(quote, idx){%>
-                    <li class="list-group-item"><%= quote %>
+                    <div class="profile-list">
+                    <li class="list-group-item"><%= quote %> </li>
                         <form action="/fans/profile/<%= idx %>?_method=DELETE&type=favoriteQuotes" method="POST">
                             <button class="btn btn-danger list-delete" type="submit">X</button>
-                        </form></li>
+                        </form>
+                    </div>
                 <% }); %>
             </ul>
         </div>
     </div>
 </div>
-
+</div>
 
 <%- include('../partials/footer') %>

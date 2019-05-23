@@ -271,7 +271,13 @@ body{
     padding: 5px;
 
 }
-
+.profile-show {
+    background-color: rgba(255,250,240,0.85);
+    padding: 10px;
+}
+.profile-backing {
+    background-color: rgba(255,250,240,0.85);
+}
 .list-delete {
     display: inline;
     

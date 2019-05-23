@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.redirect('/fans');
+  res.redirect('/actors');
 });
 
 //Google OAuth login
@@ -17,8 +17,8 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {  //change these redirects later
-    successRedirect: '/fans',
-    failureRedirect: '/fans',
+    successRedirect: '/actors',
+    failureRedirect: '/actors',
   }
 ));
 
